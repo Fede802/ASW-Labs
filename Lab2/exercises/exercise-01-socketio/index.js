@@ -6,9 +6,14 @@ const { join } = require('path');
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
+const messageHistory = [];
 
 app.get('/', (req, res) => {
     res.sendFile(join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/history', (req, res) => {
+    res.json(messageHistory);
 });
 
 io.on('connection', (socket) => {
@@ -17,6 +22,7 @@ io.on('connection', (socket) => {
     io.emit('user connected', 'a user connected');
 
     socket.on('chat message', (msg) => {
+        messageHistory.push(msg);
         io.emit('chat message', msg);
     });
 
