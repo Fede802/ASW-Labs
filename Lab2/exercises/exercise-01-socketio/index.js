@@ -26,10 +26,19 @@ io.on('connection', (socket) => {
         io.emit('chat message', msg);
     });
 
+    socket.on('typing', (msg) => {
+        console.log(msg);
+    });
+
+    socket.on('stop typing', (msg) => {
+        console.log(msg);
+    });
+
     socket.on('disconnect', () => {
         io.emit('user disconnected', 'a user disconnected');
         console.log('user disconnected');
     });
+
 });
 
 server.listen(3000, () => {

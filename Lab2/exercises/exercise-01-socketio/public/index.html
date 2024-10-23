@@ -23,6 +23,13 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         const socket = io();
+        $('form').focusin(()=>{
+          console.log('focusin');
+          socket.emit('typing', 'User typing');
+        });
+        $('form').focusout(()=>{
+          socket.emit('stop typing', 'User stops typing');
+        });
         $('form').submit((e)=>{
           e.preventDefault();
           socket.emit('chat message', $('#textInput').val());
