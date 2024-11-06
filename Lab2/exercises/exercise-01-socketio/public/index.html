@@ -17,6 +17,9 @@
   <body>
     <ul id="messages"></ul>
     <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+      <br><br>
       <input id="textInput" type="text" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
@@ -32,8 +35,11 @@
         });
         $('form').submit((e)=>{
           e.preventDefault();
-          socket.emit('chat message', $('#textInput').val());
-          $('#textInput').val('');
+          socket.emit('chat message', 
+          {
+            "name":$('#name').val(),
+            "msg":$('#textInput').val()
+          });
           return false;
         });
         socket.on('chat message', (msg)=>{

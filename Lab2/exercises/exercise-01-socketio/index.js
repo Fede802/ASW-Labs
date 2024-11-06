@@ -20,7 +20,6 @@ io.on('connection', (socket) => {
     console.log('a user connected');
 
     io.emit('user connected', 'a user connected');
-
     socket.on('chat message', (msg) => {
         messageHistory.push(msg);
         io.emit('chat message', msg);
