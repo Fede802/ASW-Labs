@@ -22,7 +22,7 @@
             </button>
         </div>
     </div>
-    <div class="row">
+    <div class="row" v-if="adding">
         <div class="col">
             <form>
                 <div class="form-group">
@@ -61,17 +61,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><img src="" alt=""></td>
-                        <td></td>
+                    <tr v-for="movie in movies" :key="movie.id">
+                        <td>{{ movie.title }}</td>
+                        <td>{{ movie.plot }}</td>
+                        <td><img v-if="movie.poster" v-bind:src="'https://m.media-amazon.com/'+movie.poster.split('m/')[1]" alt=""></td>
+                        <td>{{ movie.released }}</td>
                         <td>
-                            <button type="button" class="btn btnsm">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
+                        <button @click.prevent="deleteMovie(movie.id)" ...>
+                        <i class="fas fa-trash-alt"></i>
+                        </button>
                         </td>
-                    </tr>
+                        </tr>
                 </tbody>
             </table>
         </div>
@@ -86,9 +86,27 @@
 const defaultImgUrl = "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
 
 Vue.createApp({
-    data() { },
-    methods: { },
-    created() { }
+    data() { 
+        return {
+            movies: [],
+            adding: false
+        }
+    },
+    methods: { 
+        listMovies(){
+            axios.get("http://localhost:3000/api/movies")
+                .then(response => {
+                    console.log(response.data);
+                    this.movies = response.data;
+                });
+        },
+        showAddMovieForm() {
+            this.adding = !this.adding;
+        }
+    },
+    created() {
+        this.listMovies();
+    }
 }).mount("#crud-movies-app")
 </script>
 </body>
