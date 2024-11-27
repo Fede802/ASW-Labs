@@ -3,17 +3,24 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/exercise01');
 
 const userSchema = new mongoose.Schema({
-    // TODO: add the user schema
+    name: String,
+    email: String
 });
 
 const articleSchema = new mongoose.Schema({
-    // TODO: add the article schema
+    title: String,
+    content: String,
+    rate: {type: Number, min:0, max:5},
+    author: userSchema
 });
 
 const commentSchema = new mongoose.Schema({
-    // TODO: add the comment schema
+    content: String,
+    article: {type: mongoose.Schema.Types.ObjectId, ref: 'Article'},
 });
 
-// TODO: compile the schemas into models
+const User = mongoose.model('User', userSchema);
+const Article = mongoose.model('Article', articleSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 
 module.exports = { User, Article, Comment };
