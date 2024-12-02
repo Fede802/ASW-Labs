@@ -8,5 +8,5 @@
 </script>
 
 <template>
-    <a :href=link>{{ text }}</a>
+    <a v-bind:href=link>{{ text }}</a>
 </template>

@@ -40,27 +40,7 @@
             </thead>
             <tbody>
                 <tr v-for="pokemon in data" :key="pokemon.id" :id="pokemon.id">
-                    <td v-for="header in Object.values(headers)">
-
-                    <component :is="header.rendering(pokemon)"></component></td>
-                    <!-- <td>{{ pokemon.num }}</td>
-                    <td>{{ pokemon.name }}</td>
-                    <td><img v-bind:src="pokemon.img" alt=""></td>
-                    <td>
-                        <ul>
-                            <li v-for="type in pokemon.type">{{ type }}</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li v-for="weaknesses in pokemon.weaknesses">{{ weaknesses }}</li>
-                        </ul>
-                    </td>    
-                    <td v-if="pokemon.next_evolution">
-                        <a :href="'#'+ Number(pokemon.next_evolution[0].num)">
-                            {{ pokemon.next_evolution[0].name }}
-                        </a>
-                    </td> -->
+                    <td v-for="header in Object.values(headers)"><component :is="header.rendering(pokemon)"></component></td>
                 </tr>
             </tbody>
         </table>
