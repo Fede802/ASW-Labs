@@ -41,7 +41,7 @@ import { h } from 'vue';
                     'tr',
                     this.headers.map((header) => {
                         if(this.scopeInfo != "")
-                            return h('th', { scope: scopeInfo }, header)
+                            return h('th', { scope: this.scopeInfo }, header)
                         return h('th', header)
                     })
                 )

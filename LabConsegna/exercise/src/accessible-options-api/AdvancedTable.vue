@@ -5,6 +5,7 @@ import Image from "@/commons-options-api/Image.vue";
 import PlainText from "@/commons-options-api/PlainText.vue";
 import List from "@/commons-options-api/List.vue";
 import Link from "@/commons-options-api/Link.vue";
+
 export default {
     components: { Table, Image, PlainText, List, Link },
     data() {
