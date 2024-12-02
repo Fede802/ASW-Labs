@@ -14,6 +14,9 @@
                     this.data = this.getDataFrom(response)
                 });
             },
+            increment() {
+                this.data[0].num = 9999999;
+            }
         },
         props: {
             dbUrl: {
@@ -31,6 +34,8 @@
 </script>
 
 <template>
+    <button @click="increment">(click)
+    </button>
     <div class="table responsive">
         <table class="table" v-if="headers != []">
             <thead>
