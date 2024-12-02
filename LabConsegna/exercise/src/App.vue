@@ -10,7 +10,7 @@ import AccessibleCompositionApiTable from './accessible-composition-api/Table.vu
 </script>
 
 <template>
-    <BasicMinimalOptionApiTable />
+    <!-- <BasicMinimalOptionApiTable /> -->
     <AdvancedMinimalOptionApiTable />
     <MinimalCompositionApiTable />
     <AccessibleOptionsApiTable />
