@@ -1,7 +1,10 @@
 <script>
 import { loadData } from "../utils/dbUtils";
+import TableHeader from "../commons-options-api/TableHeader.vue";
+import TableData from "../commons-options-api/TableData.vue";
 
 export default {
+    components: { TableHeader, TableData },
     data() {
         return {
             data: [],
@@ -24,18 +27,8 @@ export default {
 <template>
     <div class="table responsive">
         <table class="table" v-if="tableBuildingData != null">
-            <thead>
-                <tr>
-                    <th v-for="header in Object.keys(tableBuildingData)">{{ header }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="element in data" :key="element.id" :id="element.id">
-                    <td v-for="renderer in Object.values(tableBuildingData)">
-                        <component :is="renderer(element)"></component>
-                    </td>
-                </tr>
-            </tbody>
+            <TableHeader v-bind:headers="Object.keys(tableBuildingData)"></TableHeader>
+            <TableData v-bind:data="data" v-bind:renderers="Object.values(tableBuildingData)"></TableData>
         </table>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <script>
 import { h } from 'vue';
-import Table from "@/commons-options-api/Table.vue";
+import Table from "./Table.vue";
 import Image from "@/commons-options-api/Image.vue";
 import PlainText from "@/commons-options-api/PlainText.vue";
 import List from "@/commons-options-api/List.vue";

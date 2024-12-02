@@ -23,7 +23,7 @@
     }
 </script>
 <template>
-    <h1>[BASE] Minimal Options API Table</h1>
+    <h1>[BASE] Accessible Options API Table</h1>
     <div class="table responsive">
     <table class="table">
         <thead v-bind:class="tableClass">
