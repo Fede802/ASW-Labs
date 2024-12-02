@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 import { h } from 'vue';
     export default {
         props: {
@@ -23,9 +23,9 @@ import { h } from 'vue';
 
 <template>
     <render />
-</template>
+</template> -->
 
-<!-- <script>
+<script>
 import { h } from 'vue';
     export default {
         props: {
@@ -52,4 +52,4 @@ import { h } from 'vue';
 
 <template>
         <component :is="getRender()"></component>
-</template> -->
+</template>

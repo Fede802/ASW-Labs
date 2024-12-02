@@ -9,31 +9,26 @@ export default {
     components: { Table, Image, PlainText, List, Link },
     data() {
         return {
-            dbUrl: "http://localhost:3000/pokedex.json",
-            dbParser: function (db) {
-                return db.pokemon
-            },
+            dbUrl: "http://localhost:3000/recipes_with_alt.json",
+            dbParser: function (db) { return db },
             tableBuildingData: {
-                "Pokedex Number": function (pokemon) {
-                    return h(PlainText, { text: pokemon.num })
+                "Name": function (recipe) {
+                    return h(PlainText, { text: recipe.name })
                 },
-                "Name": function (pokemon) {
-                    return h(PlainText, { text: pokemon.name })
+                "Description": function (recipe) {
+                    return h(PlainText, { text: recipe.description })
                 },
-                "Image": function (pokemon) {
-                    return h(Image, { img: pokemon.img })
+                "Image": function (recipe) {
+                    return h(Image, { img: recipe.image })
                 },
-                "Type": function (pokemon) {
-                    return h(List, { list: pokemon.type })
+                "Nutrients": function (recipe) {
+                    return h(List, { list: Object.entries(recipe.nutrients).map(k => k[0]+": "+k[1]) })
                 },
-                "Weaknesses": function (pokemon) {
-                    return h(List, { list: pokemon.weaknesses })
+                "Author": function (recipe) {
+                    return h(PlainText, { text: recipe.author })
                 },
-                "Evolution": function (pokemon) {
-                    if (pokemon.next_evolution) {
-                        return h(Link, { link: '#' + Number(pokemon.next_evolution[0].num), text: pokemon.next_evolution[0].name })
-                    }
-                    return h(PlainText, { text: "No Evolution" })
+                "Website": function (recipe) {
+                    return h(Link, { link: recipe.url, text: "Visit Website" })
                 },
             }
         }
@@ -42,6 +37,6 @@ export default {
 </script>
 
 <template>
-    <h1>[ADVANCED] Minimal Options API Table</h1>
+    <h1>Minimal Options API Table</h1>
     <Table v-bind:dbUrl="dbUrl" v-bind:dbParser="dbParser" v-bind:tableBuildingData="tableBuildingData" ></Table>
 </template>
