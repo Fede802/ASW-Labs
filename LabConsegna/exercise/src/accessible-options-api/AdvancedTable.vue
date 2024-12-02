@@ -9,17 +9,27 @@ export default {
     components: { Table, Image, PlainText, List, Link },
     data() {
         return {
-            dbUrl: "http://localhost:3000/products.json",
-            dbParser: function (db) {
-                return db
-            },
+            dbUrl: "http://localhost:3000/recipes_with_alt.json",
+            dbParser: function (db) { return db.slice(0,10) },
             tableBuildingData: {
-                "Product Name": function (product) {
-                    return h(PlainText, { text: product.title })
+                "Name": function (recipe) {
+                    return h(PlainText, { text: recipe.name })
                 },
-                "Image": function (product) {
-                    return h(Image, { img: "http://localhost:3000/images/"+product.filename})
-                }
+                "Description": function (recipe) {
+                    return h(PlainText, { text: recipe.description })
+                },
+                "Image": function (recipe) {
+                    return h(Image, { img: recipe.image, alt: recipe.alt })
+                },
+                "Nutrients": function (recipe) {
+                    return h(List, { list: Object.entries(recipe.nutrients).map(k => k[0]+": "+k[1]) })
+                },
+                "Author": function (recipe) {
+                    return h(PlainText, { text: recipe.author })
+                },
+                "Website": function (recipe) {
+                    return h(Link, { link: recipe.url, text: "Visit Website", style: {'white-space': 'nowrap'} })
+                },
             }
         }
     }
@@ -27,6 +37,14 @@ export default {
 </script>
 
 <template>
-    <h1>[ADVANCED] Accessible Options API Table</h1>
+    <h1>Accessible Options API Table</h1>
     <Table v-bind:dbUrl="dbUrl" v-bind:dbParser="dbParser" v-bind:tableBuildingData="tableBuildingData" ></Table>
 </template>
+
+<style scoped>
+    ::v-deep th, ::v-deep td {
+        border: 2px solid #000000;
+        text-align: center; /* Ensure content is horizontally centered */
+        vertical-align: middle; /* Ensure content is vertically centered */
+    }
+</style>

@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             dbUrl: "http://localhost:3000/recipes_with_alt.json",
-            dbParser: function (db) { return db },
+            dbParser: function (db) { return db.slice(0,10) },
             tableBuildingData: {
                 "Name": function (recipe) {
                     return h(PlainText, { text: recipe.name })

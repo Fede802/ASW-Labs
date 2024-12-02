@@ -53,3 +53,4 @@ import { h } from 'vue';
 <template>
         <component :is="getRender()"></component>
 </template>
+

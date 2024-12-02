@@ -9,13 +9,17 @@
                 type: String,
                 default: "200px"
             },
+            alt: {
+                type: String,
+                default: ""
+            },
             img: String,
         }
     }
 </script>
 
 <template>
-    <img v-bind:src="img" alt="">
+    <img v-bind:src="img" v-bind:alt="alt">
 </template>
 
 <style>
