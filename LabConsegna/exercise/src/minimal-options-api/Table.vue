@@ -12,24 +12,24 @@ export default {
         return {
             data: [],
             dbUrl: "http://localhost:3000/recipes_with_alt.json",
-            dbParser: function (db) { return db.slice(0,2) },
+            dbParser: (db) => db.slice(0,2),
             tableBuildingData: {
-                "Name": function (recipe) {
+                "Name": (recipe) => {
                     return createTextVNode(recipe.name)
                 },
-                "Description": function (recipe) {
+                "Description": (recipe) => {
                     return createTextVNode(recipe.description)
                 },
-                "Image": function (recipe) {
+                "Image": (recipe) => {
                     return h('img', { src: recipe.image })
                 },
-                "Nutrients": function (recipe) {
+                "Nutrients": (recipe) => {
                     return h(List, { list: Object.entries(recipe.nutrients).map(k => k[0]+": "+k[1]) })
                 },
-                "Author": function (recipe) {
+                "Author": (recipe) => {
                     return createTextVNode(recipe.author)
                 },
-                "Website": function (recipe) {
+                "Website": (recipe) => {
                     return h('a', { href: recipe.url,  style: {'white-space': 'nowrap'} }, "Visit Website")
                 },
             }
@@ -50,7 +50,6 @@ export default {
 
 <template>
     <h1>Accessible Options API Table</h1>
-    <!-- <button @click="listRecipes">List Recipes</button> -->
     <div class="table responsive">
         <table class="table" v-if="tableBuildingData != null">
             <TableHeader v-bind:headers="Object.keys(tableBuildingData)" scopeInfo="col"></TableHeader>
