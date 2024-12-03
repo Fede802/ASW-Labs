@@ -12,6 +12,6 @@ import AccessibleCompositionApiTable from './accessible-composition-api/Table.vu
     <MinimalOptionApiTable />
     <AccessibleOptionsApiTable />
 
-    <!-- <MinimalCompositionApiTable /> -->
-    <!-- <AccessibleCompositionApiTable /> -->
+    <MinimalCompositionApiTable />
+    <AccessibleCompositionApiTable />
 </template>

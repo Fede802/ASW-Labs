@@ -1,4 +1,4 @@
-import { loadData } from "./dbUtils.js";
+import { loadData } from "../commons-options-api/dbUtils.js";
 import fs from 'node:fs';
 const content = 'Some content!';
 
