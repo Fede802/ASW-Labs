@@ -1,15 +1,13 @@
 <script>
 import { h } from 'vue';
-import Image from "@/commons-options-api/Image.vue";
-import PlainText from "@/commons-options-api/PlainText.vue";
+import { createTextVNode } from 'vue';
 import List from "@/commons-options-api/List.vue";
-import Link from "@/commons-options-api/Link.vue";
 import TableHeader from "@/commons-options-api/TableHeader.vue";
 import TableData from "@/commons-options-api/TableData.vue";
 import { loadData } from "../utils/dbUtils";
 
 export default {
-    components: { Image, PlainText, List, Link, TableHeader, TableData },
+    components: { List, TableHeader, TableData },
     data() {
         return {
             data: [],
@@ -17,25 +15,30 @@ export default {
             dbParser: function (db) { return db.slice(0,2) },
             tableBuildingData: {
                 "Name": function (recipe) {
-                    return h(PlainText, { text: recipe.name })
+                    return createTextVNode(recipe.name)
                 },
                 "Description": function (recipe) {
-                    return h(PlainText, { text: recipe.description })
+                    return createTextVNode(recipe.description)
                 },
                 "Image": function (recipe) {
-                    return h(Image, { img: recipe.image})
+                    return h('img', { src: recipe.image })
                 },
                 "Nutrients": function (recipe) {
                     return h(List, { list: Object.entries(recipe.nutrients).map(k => k[0]+": "+k[1]) })
                 },
                 "Author": function (recipe) {
-                    return h(PlainText, { text: recipe.author })
+                    return createTextVNode(recipe.author)
                 },
                 "Website": function (recipe) {
-                    return h(Link, { link: recipe.url, text: "Visit Website", style: {'white-space': 'nowrap'} })
+                    return h('a', { href: recipe.url,  style: {'white-space': 'nowrap'} }, "Visit Website")
                 },
             }
         }
+    },
+    methods: {
+        listRecipes() {
+            this.data[0].image = ""
+        },
     },
     mounted() {
         loadData(this.dbUrl).then(response => {
@@ -47,6 +50,7 @@ export default {
 
 <template>
     <h1>Accessible Options API Table</h1>
+    <!-- <button @click="listRecipes">List Recipes</button> -->
     <div class="table responsive">
         <table class="table" v-if="tableBuildingData != null">
             <TableHeader v-bind:headers="Object.keys(tableBuildingData)" scopeInfo="col"></TableHeader>
@@ -54,3 +58,12 @@ export default {
         </table>
     </div>
 </template>
+
+<style scoped>
+    ::v-deep img {
+        width: width;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 24px;
+    }
+</style>
