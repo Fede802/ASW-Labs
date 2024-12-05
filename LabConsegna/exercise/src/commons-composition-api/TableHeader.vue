@@ -7,14 +7,10 @@ const TableHeader = defineProps({
     },
     headers: Array,
 });
-const getRender = () => { return h('tr', TableHeader.headers.map(header => { 
-    if(TableHeader.scopeInfo != "") 
-        return h('th', { scope: TableHeader.scopeInfo }, header) 
-    return h('th', header) })) 
-}
+const getRender = () => h('tr', TableHeader.headers.map(header => TableHeader.scopeInfo != "" ? h('th', { scope: TableHeader.scopeInfo }, header) : h('th', header)))
+
 </script>
 
 <template>
-        <component :is="getRender()"></component>
+    <component :is="getRender()"></component>
 </template>
-

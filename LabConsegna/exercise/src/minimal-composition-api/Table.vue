@@ -7,7 +7,7 @@ import TableData from "@/commons-composition-api/TableData.vue";
 import { loadData } from "../utils/dbUtils";
 
 const data = ref([])
-const dbUrl = ref("http://localhost:3000/recipes_with_alt.json")
+const dbUrl = ref("http://localhost:3000/recipes.json")
 const dbParser = ref(db => db.slice(0, 2))
 const tableBuildingData = ref({
     "Name": recipe => createTextVNode(recipe.name),

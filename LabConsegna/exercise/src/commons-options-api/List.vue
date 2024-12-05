@@ -1,9 +1,9 @@
 <script>
-    export default {
-        props: {
-            list: Array,
-        }
+export default {
+    props: {
+        list: Array,
     }
+}
 </script>
 
 <template>
@@ -13,8 +13,8 @@
 </template>
 
 <style>
-    li {
-        display: block;
-        white-space: nowrap;
-    }
+li {
+    display: block;
+    white-space: nowrap;
+}
 </style>

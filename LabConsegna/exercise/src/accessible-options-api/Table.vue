@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             data: [],
-            dbUrl: "http://localhost:3000/recipes_with_alt.json",
+            dbUrl: "http://localhost:3000/recipes.json",
             dbParser: db => db.slice(0, 2),
             tableBuildingData: {
                 "Name": recipe => createTextVNode(recipe.name),

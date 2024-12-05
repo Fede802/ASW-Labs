@@ -9,7 +9,6 @@ const TableData = defineProps({
     <tr v-for="element in data" :key="element.id" :id="element.id">
         <td v-for="renderer in renderers">
             <component :is="renderer(element)"></component>
-        </td>         
+        </td>
     </tr>
 </template>
-

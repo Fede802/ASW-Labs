@@ -11,8 +11,8 @@ const List = defineProps({
 </template>
 
 <style>
-    li {
-        display: block;
-        white-space: nowrap;
-    }
+li {
+    display: block;
+    white-space: nowrap;
+}
 </style>

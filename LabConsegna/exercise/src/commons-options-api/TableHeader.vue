@@ -1,30 +1,22 @@
 <script>
 import { h } from 'vue';
-    export default {
+export default {
 
-        props: {
-            scopeInfo: {
-                type: String,
-                default: ""
-            },
-            headers: Array,
+    props: {
+        scopeInfo: {
+            type: String,
+            default: ""
         },
-        methods: {
-            getRender() {
-                return h(
-                    'tr',
-                    this.headers.map(header => {
-                        if(this.scopeInfo != "")
-                            return h('th', { scope: this.scopeInfo }, header)
-                        return h('th', header)
-                    })
-                )
-            }
+        headers: Array,
+    },
+    methods: {
+        getRender() {
+            return h('tr', this.headers.map(header => this.scopeInfo != "" ? h('th', { scope: this.scopeInfo }, header) : h('th', header)))
         }
     }
+}
 </script>
 
 <template>
-        <component :is="getRender()"></component>
+    <component :is="getRender()"></component>
 </template>
-
