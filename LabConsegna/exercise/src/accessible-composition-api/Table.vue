@@ -17,6 +17,7 @@ const tableBuildingData = ref({
     "Author": recipe => createTextVNode(recipe.author),
     "Website": recipe => h('a', { href: recipe.url, style: { 'white-space': 'nowrap' } }, "Visit Website"),
 })
+
 onMounted(() => loadData(dbUrl.value).then(response => data.value = dbParser.value(response)))  
 </script>
 

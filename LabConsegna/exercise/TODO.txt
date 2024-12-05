@@ -1,5 +1,5 @@
 bug in evolution href when multiple tables
-adjust base tables
+
 make table scrollable so the headers remain in screen
 
 is thead for accessibility? thead vs scope
@@ -7,4 +7,3 @@ aria tag in href?
 
 is reactivness really needed?
 
-alt ok image of pokemon.name or full pic description??

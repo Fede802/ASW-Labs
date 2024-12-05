@@ -1,7 +1,6 @@
 <script>
 import { h } from 'vue';
 export default {
-
     props: {
         scopeInfo: {
             type: String,
