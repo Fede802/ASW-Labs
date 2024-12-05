@@ -4,7 +4,7 @@ import { createTextVNode } from 'vue';
 import List from "@/commons-options-api/List.vue";
 import TableHeader from "@/commons-options-api/TableHeader.vue";
 import TableData from "@/commons-options-api/TableData.vue";
-import { loadData } from "../commons-options-api/dbUtils";
+import { loadData } from "../utils/dbUtils";
 
 export default {
     components: { List, TableHeader, TableData },
