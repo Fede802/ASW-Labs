@@ -38,7 +38,7 @@ export default {
 </template>
 
 <style scoped>
-::v-deep img {
+:deep(img) {
     width: width;
     height: 200px;
     object-fit: cover;

@@ -42,13 +42,13 @@ export default {
 </template>
 
 <style scoped>
-::v-deep th,
-::v-deep td {
+:deep(th),
+:deep(td) {
     border: 2px solid #000000;
     vertical-align: middle;
 }
 
-::v-deep img {
+:deep(img) {
     width: width;
     height: 200px;
     object-fit: cover;

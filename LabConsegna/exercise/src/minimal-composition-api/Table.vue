@@ -32,7 +32,7 @@ onMounted(() => loadData(dbUrl.value).then(response => data.value = dbParser.val
 </template>
 
 <style scoped>
-::v-deep img {
+:deep(img) {
     width: width;
     height: 200px;
     object-fit: cover;
