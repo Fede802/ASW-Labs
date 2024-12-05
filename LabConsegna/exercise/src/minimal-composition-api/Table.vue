@@ -1,6 +1,5 @@
 <script setup>
-import { h, ref, onMounted } from 'vue';
-import { createTextVNode } from 'vue';
+import { h, ref, onMounted, createTextVNode } from 'vue';
 import List from "@/commons-composition-api/List.vue";
 import TableHeader from "@/commons-composition-api/TableHeader.vue";
 import TableData from "@/commons-composition-api/TableData.vue";

@@ -1,6 +1,5 @@
 <script>
-import { h } from 'vue';
-import { createTextVNode } from 'vue';
+import { h, createTextVNode } from 'vue';
 import List from "@/commons-options-api/List.vue";
 import TableHeader from "@/commons-options-api/TableHeader.vue";
 import TableData from "@/commons-options-api/TableData.vue";
